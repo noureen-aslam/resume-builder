@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Builder</h1>
+
+    <form id="resume-form">
+      <label>Name: <input type="text" id="name" required></label>
+      <label>Email: <input type="email" id="email" required></label>
+      <label>Phone: <input type="text" id="phone" required></label>
+      <label>Education: <textarea id="education"></textarea></label>
+      <label>Experience: <textarea id="experience"></textarea></label>
+      <label>Skills: <textarea id="skills"></textarea></label>
+
+      <button type="button" onclick="generateResume()">Preview</button>
+      <button type="button" onclick="downloadPDF()">Download PDF</button>
+    </form>
+
+    <div id="resume-preview">
+      <!-- Preview will show here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
