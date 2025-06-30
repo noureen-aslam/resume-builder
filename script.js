@@ -51,20 +51,24 @@ function generateResume() {
 }
 // Download function using jsPDF
 async function downloadPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
   const selectedDiv = document.querySelector('.resume-template[style*="block"]');
+
   if (!selectedDiv || !selectedDiv.innerText.trim()) {
     alert("Please generate your resume preview first.");
     return;
   }
 
-  doc.html(selectedDiv, {
+  // Use correct jsPDF access
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'pt', 'a4');
+
+  // Slight delay to ensure layout is fully rendered
+  await doc.html(selectedDiv, {
     callback: function (doc) {
       doc.save('My_Resume.pdf');
     },
-    x: 10,
-    y: 10
+    x: 20,
+    y: 20,
+    width: 550
   });
 }
