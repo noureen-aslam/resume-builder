@@ -10,7 +10,7 @@ function generateResume() {
   const template = document.getElementById('template').value;
 
   const preview = document.getElementById('resume-preview');
-  preview.className = "resume-template"; // reset first
+  preview.className = "resume-template"; // Reset classes
 
   if (template === 'template1') {
     preview.classList.add('template1');
@@ -42,23 +42,37 @@ function generateResume() {
   }
 }
 
-async function downloadPDF() {
+async function downloadPDF(event) {
+  event.preventDefault();
+
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p', 'pt', 'a4');
+  const content = document.getElementById("resume-preview");
 
-  const content = document.getElementById('resume-preview');
-
-  if (!content || !content.innerText.trim()) {
-    alert("Please generate your resume preview first.");
+  if (!content || content.innerHTML.trim() === '') {
+    alert("Please preview your resume first.");
     return;
   }
 
-  await doc.html(content, {
-    callback: function (doc) {
-      doc.save('My_Resume.pdf');
-    },
-    x: 20,
-    y: 20,
-    width: 550
-  });
+  try {
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'px',
+      format: [794, 1123]  // ✅ Match A4 dimensions in px
+    });
+
+    await doc.html(content, {
+      callback: function (doc) {
+        doc.save("My_Resume.pdf");
+      },
+      x: 0,
+      y: 0,
+      html2canvas: {
+        scale: 2, // ✅ High quality
+        useCORS: true
+      }
+    });
+  } catch (error) {
+    alert("PDF generation failed.");
+    console.error("Error:", error);
+  }
 }

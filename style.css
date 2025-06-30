@@ -43,14 +43,18 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Resume Templates */
 .resume-template {
   background: #fff;
   padding: 40px;
   margin-top: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 794px;      /* ✅ Exact A4 width in px for 96dpi */
+  min-height: 1123px;/* ✅ Exact A4 height */
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 /* Template 1 */
 .template1 h1 {
@@ -85,7 +89,6 @@ button:hover {
 
 .template2-sidebar h1 {
   font-size: 26px;
-  color: white;
   margin-bottom: 10px;
 }
 

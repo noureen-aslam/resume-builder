@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    .for-pdf {
+      width: 210mm;
+      padding: 20mm;
+    }
+  </style>
   <title>Digital Resume Builder</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" media="print" href="print.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -26,13 +40,12 @@
       </select>
 
       <button type="button" onclick="generateResume()">Preview</button>
-      <button type="button" onclick="downloadPDF()">Download PDF</button>
+      <button type="button" class="download-btn" onclick="downloadPDF(event)">Download PDF</button>
     </form>
 
-    <div id="resume-preview" class="resume-template"></div>
+    <div id="resume-preview" class="resume-template for-pdf"></div>
   </div>
 
   <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
