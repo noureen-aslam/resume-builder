@@ -71,3 +71,43 @@ button:hover {
   color: #444;
   line-height: 1.6;
 }
+/* === Template 2: Sidebar Layout === */
+#template2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.template2-sidebar {
+  background-color: #007BFF;
+  color: white;
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+}
+
+.template2-sidebar h1 {
+  font-size: 26px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.template2-main {
+  width: 70%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.template2-main h2 {
+  color: #2c3e50;
+  font-size: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.template2-main p {
+  color: #444;
+  margin-bottom: 10px;
+}

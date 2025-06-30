@@ -21,8 +21,10 @@
 
       <label for="template">Select Resume Template:</label>
       <select id="template" onchange="generateResume()">
-        <option value="template1">Template 1 - Classic</option>
-      </select>
+  <option value="template1">Template 1 - Classic</option>
+  <option value="template2">Template 2 - Sidebar</option>
+</select>
+
 
       <button type="button" onclick="generateResume()">Preview</button>
       <button type="button" onclick="downloadPDF()">Download PDF</button>
@@ -30,8 +32,10 @@
 
     <!-- Templates Section -->
     <div class="templates-container">
-      <div id="template1" class="resume-template"></div>
-    </div>
+  <div id="template1" class="resume-template"></div>
+  <div id="template2" class="resume-template"></div>
+</div>
+
   </div>
 
   <script src="script.js"></script>
