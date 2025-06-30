@@ -9,14 +9,12 @@ function generateResume() {
   const certificates = document.getElementById('certificates').value;
   const template = document.getElementById('template').value;
 
-  // Hide all templates first
-  document.querySelectorAll('.resume-template').forEach(t => t.style.display = 'none');
-
-  // Show selected template and inject content
+  // Show only the selected template
+  document.querySelectorAll('.resume-template').forEach(t => t.classList.remove('active'));
   const selectedDiv = document.getElementById(template);
-  selectedDiv.style.display = 'block';
+  selectedDiv.classList.add('active');
 
-   if (template === 'template1') {
+  if (template === 'template1') {
     selectedDiv.innerHTML = `
       <h1>${name}</h1>
       <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
@@ -26,9 +24,7 @@ function generateResume() {
       <h2>Projects</h2><p>${projects}</p>
       <h2>Certificates</h2><p>${certificates}</p>
     `;
-  }
-
-  if (template === 'template2') {
+  } else if (template === 'template2') {
     selectedDiv.innerHTML = `
       <div class="template2-sidebar">
         <h1>${name}</h1>
@@ -43,32 +39,29 @@ function generateResume() {
         <h2>Projects</h2><p>${projects}</p>
       </div>
     `;
+  } else {
+    selectedDiv.innerHTML = "<p>No preview available for this template.</p>";
   }
-  else {
-  selectedDiv.innerHTML = "<p>No preview available for this template.</p>";
 }
 
-}
+
+
 // Download function using jsPDF
 async function downloadPDF() {
-  const selectedDiv = document.querySelector('.resume-template[style*="block"]');
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'pt', 'a4');
 
-  if (!selectedDiv || !selectedDiv.innerText.trim()) {
+  const content = document.getElementById('export-container');
+  if (!content || !content.innerText.trim()) {
     alert("Please generate your resume preview first.");
     return;
   }
 
-  // Use correct jsPDF access
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p', 'pt', 'a4');
-
-  // Slight delay to ensure layout is fully rendered
-  await doc.html(selectedDiv, {
+  await doc.html(content, {
     callback: function (doc) {
       doc.save('My_Resume.pdf');
     },
     x: 20,
-    y: 20,
-    width: 550
+    y: 20
   });
 }

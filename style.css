@@ -44,14 +44,24 @@ button:hover {
 }
 
 .resume-template {
-  display: none;
   background: #fff;
   padding: 40px;
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', sans-serif;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
 }
+.resume-template.active {
+  visibility: visible;
+  height: auto;
+  position: relative;
+}
+
+
 
 .resume-template h1 {
   font-size: 32px;
