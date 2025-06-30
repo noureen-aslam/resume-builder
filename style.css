@@ -1,15 +1,17 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
   padding: 20px;
-  background: #f5f5f5;
+  margin: 0;
 }
 
 .container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
   max-width: 800px;
   margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 form label {
@@ -17,49 +19,55 @@ form label {
   margin: 10px 0;
 }
 
-#resume-preview {
-  background: #ffffff;
-  padding: 30px;
+form input, form textarea, form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  font-family: 'Segoe UI', sans-serif;
-  max-width: 700px;
-  margin: 30px auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-size: 16px;
 }
 
-#resume-preview h2, h3 {
+button {
+  margin: 10px 5px 0 0;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.resume-template {
+  display: none;
+  background: #fff;
+  padding: 40px;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.resume-template h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.resume-template h2 {
+  margin-top: 25px;
+  font-size: 20px;
   color: #2c3e50;
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
-  margin-top: 20px;
 }
 
-#resume-preview p {
-  margin: 8px 0;
+.resume-template p {
+  color: #444;
   line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
-  #resume-preview {
-    padding: 20px;
-  }
-
-  form label {
-    font-size: 14px;
-  }
-
-  form input, form textarea {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  button {
-    width: 100%;
-    margin-top: 10px;
-  }
 }

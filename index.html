@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Resume Builder</h1>
+    <h1>Digital Resume Builder</h1>
 
     <form id="resume-form">
       <label>Name: <input type="text" id="name" required></label>
@@ -16,21 +16,25 @@
       <label>Education: <textarea id="education"></textarea></label>
       <label>Experience: <textarea id="experience"></textarea></label>
       <label>Skills: <textarea id="skills"></textarea></label>
-      <label>Projects: <textarea id="projects" placeholder="E.g. Portfolio Website, Chat App..."></textarea></label>
-      <label>Certificates: <textarea id="certificates" placeholder="E.g. Python by Coursera, Web Dev by Google..."></textarea></label>
+      <label>Projects: <textarea id="projects"></textarea></label>
+      <label>Certificates: <textarea id="certificates"></textarea></label>
 
+      <label for="template">Select Resume Template:</label>
+      <select id="template" onchange="generateResume()">
+        <option value="template1">Template 1 - Classic</option>
+      </select>
 
       <button type="button" onclick="generateResume()">Preview</button>
       <button type="button" onclick="downloadPDF()">Download PDF</button>
     </form>
 
-    <div id="resume-preview">
-      <!-- Preview will show here -->
+    <!-- Templates Section -->
+    <div class="templates-container">
+      <div id="template1" class="resume-template"></div>
     </div>
   </div>
 
   <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 </body>
 </html>

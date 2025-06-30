@@ -7,39 +7,39 @@ function generateResume() {
   const skills = document.getElementById('skills').value;
   const projects = document.getElementById('projects').value;
   const certificates = document.getElementById('certificates').value;
+  const template = document.getElementById('template').value;
 
-  document.getElementById('resume-preview').innerHTML = `
-    <h2>${name}</h2>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Phone:</strong> ${phone}</p>
+  // Hide all templates first
+  document.querySelectorAll('.resume-template').forEach(t => t.style.display = 'none');
 
-    <h3>Education</h3>
-    <p>${education}</p>
+  // Show selected template and inject content
+  const selectedDiv = document.getElementById(template);
+  selectedDiv.style.display = 'block';
 
-    <h3>Experience</h3>
-    <p>${experience}</p>
+  selectedDiv.innerHTML = `
+    <h1>${name}</h1>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
 
-    <h3>Skills</h3>
-    <p>${skills}</p>
-
-    <h3>Projects</h3>
-    <p>${projects}</p>
-
-    <h3>Certificates</h3>
-    <p>${certificates}</p>
+    <h2>Education</h2><p>${education}</p>
+    <h2>Experience</h2><p>${experience}</p>
+    <h2>Skills</h2><p>${skills}</p>
+    <h2>Projects</h2><p>${projects}</p>
+    <h2>Certificates</h2><p>${certificates}</p>
   `;
 }
+
+// Download function using jsPDF
 async function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  const resumeElement = document.getElementById('resume-preview');
-  if (!resumeElement.innerText.trim()) {
-    alert("Please fill in the form and click Preview before downloading.");
+  const selectedDiv = document.querySelector('.resume-template[style*="block"]');
+  if (!selectedDiv || !selectedDiv.innerText.trim()) {
+    alert("Please generate your resume preview first.");
     return;
   }
 
-  doc.html(resumeElement, {
+  doc.html(selectedDiv, {
     callback: function (doc) {
       doc.save('My_Resume.pdf');
     },
@@ -47,4 +47,3 @@ async function downloadPDF() {
     y: 10
   });
 }
-
