@@ -6,13 +6,13 @@ A web-based resume builder that allows users to create professional resumes usin
 
 ## 📌 Project Features
 
-- 📝 Form to collect personal, educational, and professional details
-- 🎨 10 unique and modern resume templates
-- 🖼️ Template 3 supports photo upload
-- 🧾 Download resumes as A4-sized PDF using jsPDF + html2canvas
-- 📱 Fully mobile-responsive and browser-compatible
-- 🔁 Real-time preview of any template with your input
-- 🧠 Input formatting: bullet points and line breaks are auto-formatted
+- Form to collect personal, educational, and professional details
+- 10 unique and modern resume templates
+- Template 3 supports photo upload
+- Download resumes as A4-sized PDF using jsPDF + html2canvas
+- Fully mobile-responsive and browser-compatible
+- Real-time preview of any template with your input
+- Input formatting: bullet points and line breaks are auto-formatted
 
 ---
 
