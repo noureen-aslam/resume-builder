@@ -104,6 +104,22 @@ function generateResume() {
     <h2>Projects</h2><p>${projects}</p>
     <h2>Certificates</h2><p>${certificates}</p>
   `;
+  } else if (template === 'template7') {
+  preview.classList.add('template7');
+  preview.innerHTML = `
+    <div class="template7-header">
+      <h1>${name}</h1>
+      <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+    </div>
+    <div class="template7-body">
+      <h2>Education</h2><p>${education}</p>
+      <h2>Experience</h2><p>${experience}</p>
+      <h2>Skills</h2><p>${skills}</p>
+      <h2>Projects</h2><p>${projects}</p>
+      <h2>Certificates</h2><p>${certificates}</p>
+    </div>
+  `;
+
 }
 
 }

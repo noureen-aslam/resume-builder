@@ -216,3 +216,50 @@ button:hover {
   line-height: 1.6;
 }
 
+/* === Template 7: Colored Section Resume === */
+.template7 {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #2c3e50;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.template7-header {
+  background-color: #0056b3;
+  color: white;
+  padding: 30px 40px;
+}
+
+.template7-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.template7-header p {
+  margin: 5px 0 0;
+  font-size: 15px;
+}
+
+.template7-body {
+  padding: 30px 40px;
+  background-color: #f9f9f9;
+}
+
+.template7-body h2 {
+  font-size: 20px;
+  color: #0056b3;
+  border-bottom: 1px solid #ccc;
+  margin-top: 25px;
+  padding-bottom: 5px;
+}
+
+.template7-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
