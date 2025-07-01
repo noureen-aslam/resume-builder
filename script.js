@@ -1,3 +1,20 @@
+// Format comma-separated list (skills) into bullets
+function formatBullets(text) {
+  if (!text.trim()) return '';
+  return '<ul><li>' + text.trim().replace(/,\s*/g, '</li><li>') + '</li></ul>';
+}
+
+// Format textarea (experience, projects, certificates) into bullets
+function formatLines(text) {
+  if (!text.trim()) return '';
+  return '<ul><li>' + text.trim().replace(/\n+/g, '</li><li>') + '</li></ul>';
+}
+
+// Format education as paragraphs (in case it's just one or two lines)
+function formatParagraph(text) {
+  return text.trim().replace(/\n/g, '<br>');
+}
+
 function generateResume() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
@@ -27,146 +44,189 @@ function generateResume() {
   }
 
   function renderTemplate() {
-    if (template === 'template1') {
-      preview.classList.add('template1');
-      preview.innerHTML = `
-        <h1>${name}</h1>
-        <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-        <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-        <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-        <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-        <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-        <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
-      `;
+
+  if (template === 'template1') {
+  preview.classList.add('template1');
+  preview.innerHTML = `
+    <h1>${name}</h1>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+
+    <h2>Education</h2>
+    <p>${formatParagraph(education)}</p>
+
+    <h2>Experience</h2>
+    ${formatLines(experience)}
+
+    <h2>Skills</h2>
+    ${formatBullets(skills)}
+
+    <h2>Projects</h2>
+    ${formatLines(projects)}
+
+    <h2>Certificates</h2>
+    ${formatLines(certificates)}
+  `;
+
     } else if (template === 'template2') {
-      preview.classList.add('template2');
-      preview.innerHTML = `
-        <div class="template2-sidebar">
+  preview.classList.add('template2');
+  preview.innerHTML = `
+    <div class="template2-sidebar">
+      <h1>${name}</h1>
+      <p><strong>Email:</strong><br>${email}</p>
+      <p><strong>Phone:</strong><br>${phone}</p>
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Certificates</h2>${formatLines(certificates)}
+    </div>
+    <div class="template2-main">
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Projects</h2>${formatLines(projects)}
+    </div>
+  `;
+}  else if (template === 'template3') {
+  const fileInput = document.getElementById('photo');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please upload a photo for this template.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const photoSrc = e.target.result;
+
+    preview.classList.add('template3');
+    preview.innerHTML = `
+      <div class="photo-header" style="display: flex; align-items: center; gap: 20px;">
+        <img src="${photoSrc}" alt="Profile Photo" width="100" style="border-radius: 8px;">
+        <div>
           <h1>${name}</h1>
-          <p><strong>Email:</strong><br>${email}</p>
-          <p><strong>Phone:</strong><br>${phone}</p>
-          <p><strong>Skills:</strong><br>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-          <p><strong>Certificates:</strong><br>${certificates.replace(/\n/g, '<br>')}</p>
+          <p><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}</p>
         </div>
-        <div class="template2-main">
-          <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-          <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-          <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-        </div>
-      `;
-    } else if (template === 'template3') {
-      preview.classList.add('template1');
-      preview.innerHTML = `
-        ${photoHTML}
-        <h1>${name}</h1>
-        <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-        <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-        <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-        <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-        <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-        <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
-      `;
-    }else if (template === 'template4') {
+      </div>
+
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Projects</h2>${formatLines(projects)}
+      <h2>Certificates</h2>${formatLines(certificates)}
+    `;
+  };
+
+  reader.readAsDataURL(file); // converts image to base64
+}
+ else if (template === 'template4') {
   preview.classList.add('template4');
   preview.innerHTML = `
     <div class="template4-left">
       <h1>${name}</h1>
-      <p><strong>Email:</strong><br>${email}</p>
-      <p><strong>Phone:</strong><br>${phone}</p>
-      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+      <p>${email} | ${phone}</p>
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Certificates</h2>${formatLines(certificates)}
     </div>
     <div class="template4-right">
-      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Projects</h2>${formatLines(projects)}
     </div>
   `;
-  } else if (template === 'template5') {
+} else if (template === 'template5') {
   preview.classList.add('template5');
   preview.innerHTML = `
     <h1>${name}</h1>
-    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+    <p>${email} | ${phone}</p>
+    <h2>Education</h2><p>${formatParagraph(education)}</p>
+    <h2>Experience</h2>${formatLines(experience)}
+    <h2>Skills</h2>${formatBullets(skills)}
+    <h2>Projects</h2>${formatLines(projects)}
+    <h2>Certificates</h2>${formatLines(certificates)}
   `;
-  } else if (template === 'template6') {
+}
+  else if (template === 'template6') {
   preview.classList.add('template6');
   preview.innerHTML = `
     <h1>${name}</h1>
-    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+    <p>Email: ${email} | Phone: ${phone}</p>
+    <h2>Education</h2><p>${formatParagraph(education)}</p>
+    <h2>Experience</h2>${formatLines(experience)}
+    <h2>Skills</h2>${formatBullets(skills)}
+    <h2>Projects</h2>${formatLines(projects)}
+    <h2>Certificates</h2>${formatLines(certificates)}
   `;
-  } else if (template === 'template7') {
+} else if (template === 'template7') {
   preview.classList.add('template7');
   preview.innerHTML = `
     <div class="template7-header">
       <h1>${name}</h1>
-      <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+      <p>Email: ${email} | Phone: ${phone}</p>
     </div>
     <div class="template7-body">
-      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
-    </div>
-  `;
-
-} else if (template === 'template8') {
-  preview.classList.add('template8');
-  preview.innerHTML = `
-    <h1>${name}</h1>
-    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <div class="timeline-section">
-      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Projects</h2>${formatLines(projects)}
+      <h2>Certificates</h2>${formatLines(certificates)}
     </div>
   `;
 }
- else if (template === 'template9') {
+ else if (template === 'template8') {
+  preview.classList.add('template8');
+  preview.innerHTML = `
+    <h1>${name}</h1>
+    <p>Email: ${email} | Phone: ${phone}</p>
+    <div class="timeline-section">
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Projects</h2>${formatLines(projects)}
+      <h2>Certificates</h2>${formatLines(certificates)}
+    </div>
+  `;
+} else if (template === 'template9') {
   preview.classList.add('template9');
   preview.innerHTML = `
     <div class="template9-left">
       <h2>Contact</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+      <p>${name}</p>
+      <p>${email}</p>
+      <p>${phone}</p>
+      <h2>Skills</h2>${formatBullets(skills)}
+      <h2>Certificates</h2>${formatLines(certificates)}
     </div>
     <div class="template9-right">
-      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}p>
-      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+      <h2>Education</h2><p>${formatParagraph(education)}</p>
+      <h2>Experience</h2>${formatLines(experience)}
+      <h2>Projects</h2>${formatLines(projects)}
     </div>
   `;
-} else if (template === 'template10') {
+}
+ else if (template === 'template10') {
   preview.classList.add('template10');
   preview.innerHTML = `
     <h1>${name}</h1>
     <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
-    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
-    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
-    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
-    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
+
+    <h2>Education</h2>
+    <p>${formatParagraph(education)}</p>
+
+    <h2>Experience</h2>
+    ${formatLines(experience)}
+
+    <h2>Skills</h2>
+    ${formatBullets(skills)}
+
+    <h2>Projects</h2>
+    ${formatLines(projects)}
+
+    <h2>Certificates</h2>
+    ${formatLines(certificates)}
   `;
-
-
 }
 
-}
+
+  }
 }
   
 

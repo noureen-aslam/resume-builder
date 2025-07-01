@@ -105,13 +105,17 @@ button:hover {
 }
 
 /* Template 3 Photo */
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 15px;
+.template3 img {
+  width: 100px;
+  border-radius: 8px;
 }
+
+.template3 .photo-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 
 /* === Template 4: Two-Column Professional === */
 .template4 {
