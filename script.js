@@ -134,7 +134,7 @@ function generateResume() {
     </div>
   `;
 }
-} else if (template === 'template9') {
+ else if (template === 'template9') {
   preview.classList.add('template9');
   preview.innerHTML = `
     <div class="template9-left">
@@ -166,7 +166,8 @@ function generateResume() {
 
 }
 
-    }
+}
+}
   
 
 
