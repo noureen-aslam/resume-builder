@@ -49,12 +49,10 @@ button:hover {
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 794px;      /* ✅ Exact A4 width in px for 96dpi */
-  min-height: 1123px;/* ✅ Exact A4 height */
+  width: 794px;      /* A4 width in px */
+  min-height: 1123px;/* A4 height */
   margin: auto;
-  font-family: 'Segoe UI', sans-serif;
 }
-
 
 /* Template 1 */
 .template1 h1 {
@@ -78,7 +76,6 @@ button:hover {
   display: flex;
   gap: 20px;
 }
-
 .template2-sidebar {
   background-color: #007BFF;
   color: white;
@@ -86,19 +83,16 @@ button:hover {
   width: 30%;
   border-radius: 10px;
 }
-
 .template2-sidebar h1 {
   font-size: 26px;
   margin-bottom: 10px;
 }
-
 .template2-main {
   width: 70%;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
 }
-
 .template2-main h2 {
   color: #2c3e50;
   font-size: 20px;
@@ -106,8 +100,58 @@ button:hover {
   padding-bottom: 5px;
   margin-top: 20px;
 }
-
 .template2-main p {
   color: #444;
   margin-bottom: 10px;
 }
+
+/* Template 3 Photo */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+/* === Template 4: Two-Column Professional === */
+.template4 {
+  display: flex;
+  gap: 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.template4-left, .template4-right {
+  padding: 20px;
+}
+
+.template4-left {
+  width: 35%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.template4-right {
+  width: 65%;
+}
+
+.template4 h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.template4 h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #34495e;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.template4 p {
+  font-size: 15px;
+  color: #333;
+  margin: 5px 0;
+}
+
