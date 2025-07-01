@@ -120,7 +120,49 @@ function generateResume() {
     </div>
   `;
 
+} else if (template === 'template8') {
+  preview.classList.add('template8');
+  preview.innerHTML = `
+    <h1>${name}</h1>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+    <div class="timeline-section">
+      <h2>Education</h2><p>${education}</p>
+      <h2>Experience</h2><p>${experience}</p>
+      <h2>Skills</h2><p>${skills}</p>
+      <h2>Projects</h2><p>${projects}</p>
+      <h2>Certificates</h2><p>${certificates}</p>
+    </div>
+  `;
 }
+} else if (template === 'template9') {
+  preview.classList.add('template9');
+  preview.innerHTML = `
+    <div class="template9-left">
+      <h2>Contact</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <h2>Skills</h2><p>${skills}</p>
+      <h2>Certificates</h2><p>${certificates}</p>
+    </div>
+    <div class="template9-right">
+      <h2>Education</h2><p>${education}</p>
+      <h2>Experience</h2><p>${experience}</p>
+      <h2>Projects</h2><p>${projects}</p>
+    </div>
+  `;
+} else if (template === 'template10') {
+  preview.classList.add('template10');
+  preview.innerHTML = `
+    <h1>${name}</h1>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+    <h2>Education</h2><p>${education}</p>
+    <h2>Experience</h2><p>${experience}</p>
+    <h2>Skills</h2><p>${skills}</p>
+    <h2>Projects</h2><p>${projects}</p>
+    <h2>Certificates</h2><p>${certificates}</p>
+  `;
+
 
 }
 
