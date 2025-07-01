@@ -32,11 +32,11 @@ function generateResume() {
       preview.innerHTML = `
         <h1>${name}</h1>
         <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-        <h2>Education</h2><p>${education}</p>
-        <h2>Experience</h2><p>${experience}</p>
-        <h2>Skills</h2><p>${skills}</p>
-        <h2>Projects</h2><p>${projects}</p>
-        <h2>Certificates</h2><p>${certificates}</p>
+        <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+        <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+        <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+        <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+        <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
       `;
     } else if (template === 'template2') {
       preview.classList.add('template2');
@@ -45,13 +45,13 @@ function generateResume() {
           <h1>${name}</h1>
           <p><strong>Email:</strong><br>${email}</p>
           <p><strong>Phone:</strong><br>${phone}</p>
-          <p><strong>Skills:</strong><br>${skills}</p>
-          <p><strong>Certificates:</strong><br>${certificates}</p>
+          <p><strong>Skills:</strong><br>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+          <p><strong>Certificates:</strong><br>${certificates.replace(/\n/g, '<br>')}</p>
         </div>
         <div class="template2-main">
-          <h2>Education</h2><p>${education}</p>
-          <h2>Experience</h2><p>${experience}</p>
-          <h2>Projects</h2><p>${projects}</p>
+          <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+          <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+          <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
         </div>
       `;
     } else if (template === 'template3') {
@@ -60,11 +60,11 @@ function generateResume() {
         ${photoHTML}
         <h1>${name}</h1>
         <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-        <h2>Education</h2><p>${education}</p>
-        <h2>Experience</h2><p>${experience}</p>
-        <h2>Skills</h2><p>${skills}</p>
-        <h2>Projects</h2><p>${projects}</p>
-        <h2>Certificates</h2><p>${certificates}</p>
+        <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+        <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+        <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+        <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+        <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
       `;
     }else if (template === 'template4') {
   preview.classList.add('template4');
@@ -73,13 +73,13 @@ function generateResume() {
       <h1>${name}</h1>
       <p><strong>Email:</strong><br>${email}</p>
       <p><strong>Phone:</strong><br>${phone}</p>
-      <h2>Skills</h2><p>${skills}</p>
-      <h2>Certificates</h2><p>${certificates}</p>
+      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
     </div>
     <div class="template4-right">
-      <h2>Education</h2><p>${education}</p>
-      <h2>Experience</h2><p>${experience}</p>
-      <h2>Projects</h2><p>${projects}</p>
+      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
     </div>
   `;
   } else if (template === 'template5') {
@@ -87,22 +87,22 @@ function generateResume() {
   preview.innerHTML = `
     <h1>${name}</h1>
     <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education}</p>
-    <h2>Experience</h2><p>${experience}</p>
-    <h2>Skills</h2><p>${skills}</p>
-    <h2>Projects</h2><p>${projects}</p>
-    <h2>Certificates</h2><p>${certificates}</p>
+    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
   `;
   } else if (template === 'template6') {
   preview.classList.add('template6');
   preview.innerHTML = `
     <h1>${name}</h1>
     <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education}</p>
-    <h2>Experience</h2><p>${experience}</p>
-    <h2>Skills</h2><p>${skills}</p>
-    <h2>Projects</h2><p>${projects}</p>
-    <h2>Certificates</h2><p>${certificates}</p>
+    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
   `;
   } else if (template === 'template7') {
   preview.classList.add('template7');
@@ -112,11 +112,11 @@ function generateResume() {
       <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
     </div>
     <div class="template7-body">
-      <h2>Education</h2><p>${education}</p>
-      <h2>Experience</h2><p>${experience}</p>
-      <h2>Skills</h2><p>${skills}</p>
-      <h2>Projects</h2><p>${projects}</p>
-      <h2>Certificates</h2><p>${certificates}</p>
+      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
     </div>
   `;
 
@@ -126,11 +126,11 @@ function generateResume() {
     <h1>${name}</h1>
     <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
     <div class="timeline-section">
-      <h2>Education</h2><p>${education}</p>
-      <h2>Experience</h2><p>${experience}</p>
-      <h2>Skills</h2><p>${skills}</p>
-      <h2>Projects</h2><p>${projects}</p>
-      <h2>Certificates</h2><p>${certificates}</p>
+      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
     </div>
   `;
 }
@@ -142,13 +142,13 @@ function generateResume() {
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone}</p>
-      <h2>Skills</h2><p>${skills}</p>
-      <h2>Certificates</h2><p>${certificates}</p>
+      <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+      <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
     </div>
     <div class="template9-right">
-      <h2>Education</h2><p>${education}</p>
-      <h2>Experience</h2><p>${experience}</p>
-      <h2>Projects</h2><p>${projects}</p>
+      <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+      <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}p>
+      <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
     </div>
   `;
 } else if (template === 'template10') {
@@ -156,11 +156,11 @@ function generateResume() {
   preview.innerHTML = `
     <h1>${name}</h1>
     <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
-    <h2>Education</h2><p>${education}</p>
-    <h2>Experience</h2><p>${experience}</p>
-    <h2>Skills</h2><p>${skills}</p>
-    <h2>Projects</h2><p>${projects}</p>
-    <h2>Certificates</h2><p>${certificates}</p>
+    <h2>Education</h2><p>${education.replace(/\n/g, '<br>')}</p>
+    <h2>Experience</h2><p>${experience.replace(/\n/g, '<br>')}</p>
+    <h2>Skills</h2><p>${skills.replace(/,\s*/g, '</li><li>').replace(/^/, '<ul><li>').replace(/$/, '</li></ul>')}</p>
+    <h2>Projects</h2><p>${projects.replace(/\n/g, '<br>')}</p>
+    <h2>Certificates</h2><p>${certificates.replace(/\n/g, '<br>')}</p>
   `;
 
 
