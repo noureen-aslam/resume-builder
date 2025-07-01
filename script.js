@@ -93,10 +93,23 @@ function generateResume() {
     <h2>Projects</h2><p>${projects}</p>
     <h2>Certificates</h2><p>${certificates}</p>
   `;
+  } else if (template === 'template6') {
+  preview.classList.add('template6');
+  preview.innerHTML = `
+    <h1>${name}</h1>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+    <h2>Education</h2><p>${education}</p>
+    <h2>Experience</h2><p>${experience}</p>
+    <h2>Skills</h2><p>${skills}</p>
+    <h2>Projects</h2><p>${projects}</p>
+    <h2>Certificates</h2><p>${certificates}</p>
+  `;
+}
+
 }
 
     }
-  }
+  
 
 
 async function downloadPDF(event) {
@@ -114,22 +127,38 @@ async function downloadPDF(event) {
     const doc = new jsPDF({
       orientation: 'portrait',
       unit: 'px',
-      format: [794, 1123]
+      format: [794, 1123] // A4 base
     });
 
-    await doc.html(content, {
+    // Clone content to avoid changes
+    const clone = content.cloneNode(true);
+    clone.style.margin = '0';
+    clone.style.transform = 'scale(1)';
+    clone.style.overflow = 'hidden';
+    document.body.appendChild(clone);
+
+    // Measure height
+    const height = clone.scrollHeight;
+
+    await doc.html(clone, {
       callback: function (doc) {
         doc.save("My_Resume.pdf");
+        document.body.removeChild(clone);
       },
       x: 0,
       y: 0,
+      width: 794,
+      windowWidth: 794,
       html2canvas: {
-        scale: 2,
+        scale: 1,
         useCORS: true
       }
     });
+
   } catch (error) {
     alert("PDF generation failed.");
     console.error("Error:", error);
   }
 }
+
+
