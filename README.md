@@ -50,7 +50,7 @@ A web-based resume builder that allows users to create professional resumes usin
 
 ## 📽️ Project Demo (with voice-over)
 
-🎥 [Insert your Google Drive or YouTube demo video link here]
+https://drive.google.com/file/d/1-XUrK1x3_IFcUWmqxne5WhDZ4BDd_cA7/view?usp=drive_link
 
 ---
 
