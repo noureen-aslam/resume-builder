@@ -2,6 +2,10 @@
 
 A web-based resume builder that allows users to create professional resumes using **10 customizable templates**, preview them live, and export them as clean A4-size PDFs.
 
+## 📽️ Project Demo (with voice-over)
+
+https://drive.google.com/file/d/1-XUrK1x3_IFcUWmqxne5WhDZ4BDd_cA7/view?usp=drive_link
+
 ---
 
 ## 📌 Project Features
@@ -42,17 +46,6 @@ A web-based resume builder that allows users to create professional resumes usin
 
 ---
 
-## 🖼️ Screenshots
-
-> Screenshots of templates and PDF output can be found in the `/screenshots/` folder or demo video.
-
----
-
-## 📽️ Project Demo (with voice-over)
-
-https://drive.google.com/file/d/1-XUrK1x3_IFcUWmqxne5WhDZ4BDd_cA7/view?usp=drive_link
-
----
 
 ## 🧪 How to Use
 
